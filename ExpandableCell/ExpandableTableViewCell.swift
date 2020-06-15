@@ -4,6 +4,12 @@ class ExpandableTableViewCell: UITableViewCell {
     
     var isTeamFollowed:((Bool) -> (Void))?
 
+    @IBOutlet weak var buttonsStackView: UIStackView! {
+        didSet {
+            buttonsStackView.isHidden = true
+        }
+    }
+
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var unfollowButton: UIButton!
     @IBOutlet weak var followingTeamImageView: UIImageView!
@@ -12,11 +18,9 @@ class ExpandableTableViewCell: UITableViewCell {
         if followingTeamImageView.isHidden {
             followingTeamImageView.isHidden = !followingTeamImageView.isHidden
             followButton.setTitle("Unfollow", for: .normal)
-            //isTeamFollowed!(!followingTeamImageView.isHidden)
         } else {
             followingTeamImageView.isHidden = true
             followButton.setTitle("Follow", for: .normal)
-            //isTeamFollowed!(followingTeamImageView.isHidden)
         }
     }
     
